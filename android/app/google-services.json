@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55725043193",
+    "project_id": "fitmais-4266a",
+    "storage_bucket": "fitmais-4266a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55725043193:android:4107b923624aebdc572128",
+        "android_client_info": {
+          "package_name": "com.example.fitmais"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmrEdiUingHFAOc5Tb4QmfBzi8uzLWujQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
