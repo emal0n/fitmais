@@ -1,0 +1,175 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
+
+
+class Cronometro extends StatefulWidget {
+  @override
+  _CronometroState createState() => _CronometroState();
+}
+
+class _CronometroState extends State<Cronometro> {
+  final Player = AudioCache();
+
+  TextEditingController _controller = TextEditingController();
+  late Timer _timer;
+  int _totalTime = 0; // Tempo total em segundos
+  int _remainingTime = 0; // Tempo restante em segundos
+  bool _isRunning = false;
+
+  void _startTimer() {
+    int minutes = int.tryParse(_controller.text) ?? 0;
+    _totalTime = minutes * 60;
+    _remainingTime = _totalTime;
+
+    if (_remainingTime > 0) {
+      setState(() {
+        _isRunning = true;
+      });
+
+      _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+        setState(() {
+          if (_remainingTime > 0) {
+            _remainingTime--;
+          } else {
+            _timer.cancel();
+            _isRunning = false;
+          }
+        });
+      });
+    }
+  }
+
+  void _stopTimer() {
+    if (_isRunning) {
+      _timer.cancel();
+      setState(() {
+        _isRunning = false;
+      });
+    }
+  }
+
+  void _resetTimer() {
+    if (_isRunning) {
+      _timer.cancel();
+      setState(() {
+        _isRunning = false;
+      });
+    }
+    setState(() {
+      _remainingTime = 0;
+    });
+  }
+
+  String _formatTime(int totalSeconds) {
+    int minutes = totalSeconds ~/ 60;
+    int seconds = totalSeconds % 60;
+
+    String minutesStr = minutes.toString().padLeft(2, '0');
+    String secondsStr = seconds.toString().padLeft(2, '0');
+
+    return "$minutesStr:$secondsStr";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Meditação'),
+      ),
+      body: Container(
+        color: Colors.lightGreen[100], // Define a cor de fundo
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Center(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: CircularProgressIndicator(
+                        value:
+                            _totalTime == 0 ? 1.0 : _remainingTime / _totalTime,
+                        strokeWidth: 10,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.green[800]!), // Define a cor do círculo
+                      ),
+                    ),
+                    Text(
+                      _formatTime(_remainingTime),
+                      style: TextStyle(
+                          fontSize: 48.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: <Widget>[
+                  if (!_isRunning) ...[
+                    Container(
+                      width: double.infinity,
+                      child: TextField(
+                        controller: _controller,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Minutos para você meditar...',
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: _startTimer,
+      
+                      child: Text(
+                        'Iniciar',
+                        style: TextStyle(
+                            color: Colors.white), 
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _startTimer,
+                      child: Text(
+                        'Iniciar',
+                        style: TextStyle(
+                            color: Colors
+                                .white), // Define a cor branca para o texto do botão
+                      ),
+                    ),
+                  ] else ...[
+                    ElevatedButton(
+                      onPressed: _stopTimer,
+                      child: Text(
+                        'Parar',
+                        style: TextStyle(
+                            color: Colors
+                                .white), // Define a cor branca para o texto do botão
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: _resetTimer,
+                      child: Text(
+                        'Resetar',
+                        style: TextStyle(
+                            color: Colors
+                                .white), // Define a cor branca para o texto do botão
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            SizedBox(height: 20.0), // Espaço abaixo dos botões
+          ],
+        ),
+      ),
+    );
+  }
+}
