@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'CtrlIMC.dart';
+import 'timer.dart';
 
 
 class TelaPrincipal extends StatefulWidget {
@@ -12,7 +13,9 @@ class TelaPrincipalState extends State<TelaPrincipal> {
 
   final List<Widget> _pages = [
     
-    CtrlImc()
+    CtrlImc(),
+    Cronometro()
+
   ];
 
   void _onTap(int index) {
