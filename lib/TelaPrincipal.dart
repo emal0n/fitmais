@@ -55,7 +55,7 @@ class TelaPrincipalState extends State<TelaPrincipal> {
           ),
            BottomNavigationBarItem(
             icon: Icon(Icons.equalizer_rounded),
-            label: 'Controle IMC',
+            label: 'Registro do Peso',
             backgroundColor:  Colors.black,
           ),
           BottomNavigationBarItem(
