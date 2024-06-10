@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:fitmais/Dicas_saude.dart';
+import 'package:fitmais/mainVICTOR.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -20,8 +21,8 @@ class TelaPrincipalState extends State<TelaPrincipal> {
     
     DicasSaude(),
     CtrlImc(),
-    Cronometro()
-
+    Cronometro(),
+    FoodRoutineApp(),
   ];
 
   void _onTap(int index) {
