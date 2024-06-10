@@ -74,9 +74,6 @@ class _CronometroState extends State<Cronometro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Meditação'),
-      ),
       body: Container(
         color: Colors.lightGreen[100], // Define a cor de fundo
         child: Column(
@@ -124,44 +121,62 @@ class _CronometroState extends State<Cronometro> {
                       ),
                     ),
                     SizedBox(height: 20.0),
-                    ElevatedButton(
-                      onPressed: _startTimer,
-      
-                      child: Text(
-                        'Iniciar',
-                        style: TextStyle(
-                            color: Colors.white), 
+                    GestureDetector(
+                  onTap: _startTimer,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _startTimer,
-                      child: Text(
-                        'Iniciar',
-                        style: TextStyle(
-                            color: Colors
-                                .white), // Define a cor branca para o texto do botão
-                      ),
-                    ),
+                      padding: const EdgeInsets.all(25),
+                      child: const Center(
+                        child: Text(
+                          'Iniciar',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ))),
                   ] else ...[
-                    ElevatedButton(
-                      onPressed: _stopTimer,
-                      child: Text(
-                        'Parar',
-                        style: TextStyle(
-                            color: Colors
-                                .white), // Define a cor branca para o texto do botão
+                  GestureDetector(
+                  onTap: _stopTimer,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    ),
+                      padding: const EdgeInsets.all(25),
+                      child: const Center(
+                        child: Text(
+                          'Parar',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ))),
                     SizedBox(height: 20.0),
-                    ElevatedButton(
-                      onPressed: _resetTimer,
-                      child: Text(
-                        'Resetar',
-                        style: TextStyle(
-                            color: Colors
-                                .white), // Define a cor branca para o texto do botão
+                     GestureDetector(
+                  onTap: _resetTimer,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    ),
+                      padding: const EdgeInsets.all(25),
+                      child: const Center(
+                        child: Text(
+                          'Resetar',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ))),
                   ],
                 ],
               ),
