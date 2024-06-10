@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore: ^5.0.0
   audioplayers: ^6.0.0
   google_nav_bar: ^5.0.6
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
