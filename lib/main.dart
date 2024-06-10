@@ -16,8 +16,8 @@ class FitMais extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Fit+',
+      debugShowCheckedModeBanner: false,
       home: TelaPrincipal(),
     );
   }

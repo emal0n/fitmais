@@ -13,8 +13,8 @@ class _CronometroState extends State<Cronometro> {
 
   TextEditingController _controller = TextEditingController();
   late Timer _timer;
-  int _totalTime = 0; // Tempo total em segundos
-  int _remainingTime = 0; // Tempo restante em segundos
+  int _totalTime = 0;
+  int _remainingTime = 0; 
   bool _isRunning = false;
 
   void _startTimer() {
@@ -75,7 +75,7 @@ class _CronometroState extends State<Cronometro> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightGreen[100], // Define a cor de fundo
+        color: Colors.lightGreen[100],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -92,7 +92,7 @@ class _CronometroState extends State<Cronometro> {
                             _totalTime == 0 ? 1.0 : _remainingTime / _totalTime,
                         strokeWidth: 10,
                         valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.green[800]!), // Define a cor do círculo
+                            Colors.green[800]!),
                       ),
                     ),
                     Text(
@@ -116,7 +116,6 @@ class _CronometroState extends State<Cronometro> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Minutos para você meditar...',
                         ),
                       ),
                     ),
@@ -131,7 +130,7 @@ class _CronometroState extends State<Cronometro> {
                       padding: const EdgeInsets.all(25),
                       child: const Center(
                         child: Text(
-                          'Iniciar',
+                          'INICIAR',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
@@ -150,7 +149,7 @@ class _CronometroState extends State<Cronometro> {
                       padding: const EdgeInsets.all(25),
                       child: const Center(
                         child: Text(
-                          'Parar',
+                          'PARAR',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
@@ -169,7 +168,7 @@ class _CronometroState extends State<Cronometro> {
                       padding: const EdgeInsets.all(25),
                       child: const Center(
                         child: Text(
-                          'Resetar',
+                          'RESETAR',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
@@ -181,7 +180,7 @@ class _CronometroState extends State<Cronometro> {
                 ],
               ),
             ),
-            SizedBox(height: 20.0), // Espaço abaixo dos botões
+            SizedBox(height: 20.0),
           ],
         ),
       ),

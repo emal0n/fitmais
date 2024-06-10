@@ -72,10 +72,9 @@ class CtrlImcState extends State<CtrlImc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registros de Peso'),
-      ),
-      body: Column(
+      
+      body: Center(
+        child: Column (
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
@@ -91,6 +90,8 @@ class CtrlImcState extends State<CtrlImc> {
           ))
         ],
       ),
+      ),
+      
     );
   }
 }
