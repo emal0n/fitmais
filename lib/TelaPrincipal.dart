@@ -22,7 +22,7 @@ class TelaPrincipalState extends State<TelaPrincipal> {
     DicasSaude(),
     CtrlImc(),
     Cronometro(),
-    FoodRoutineApp(),
+    FoodRoutineHomePage(),
   ];
 
   void _onTap(int index) {
@@ -30,18 +30,18 @@ class TelaPrincipalState extends State<TelaPrincipal> {
       _currentIndex = index;
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
   return Scaffold(
       appBar: AppBar(
         title: const Text('Fit+'),
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
         fontSize: 40,
         fontWeight:FontWeight.w900,
         color: Colors.black,
         ),
-        backgroundColor: Colors.lightGreen[100],
+        backgroundColor: const Color.fromARGB(255, 131, 180, 75),
       ),
       body: _pages[_currentIndex],
       
