@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-class FoodRoutineApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rotina de Consumo de Alimentos',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: FoodRoutineHomePage(),
-    );
-  }
-}
-
 // Página inicial do aplicativo
 class FoodRoutineHomePage extends StatefulWidget {
   @override
@@ -87,7 +73,9 @@ class _FoodRoutineHomePageState extends State<FoodRoutineHomePage> {
               onTap: () {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Lista copiada para a área de transferência')),
+                  SnackBar(
+                      content:
+                          Text('Lista copiada para a área de transferência')),
                 );
               },
             ),
@@ -122,25 +110,35 @@ class _FoodRoutineHomePageState extends State<FoodRoutineHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Rotina de Consumo de Alimentos'),
-      ),
-      body: ListView.builder(
-        itemCount: foodLists.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(foodLists[index]),
-            onTap: () => _openList(index),
-            trailing: IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () => _showOptions(context, index),
-            ),
-          );
-        },
+      body: Container(
+        color: const Color.fromARGB(255, 131, 180, 75),
+        child: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(70))),
+          child: ListView.builder(
+            itemCount: foodLists.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(foodLists[index]),
+                onTap: () => _openList(index),
+                trailing: IconButton(
+                  icon: const Icon(Icons.more_vert),
+                  onPressed: () => _showOptions(context, index),
+                ),
+              );
+            },
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addNewList,
-        child: Icon(Icons.add),
+        backgroundColor: const Color.fromARGB(255, 131, 180, 75),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -174,40 +172,53 @@ class _ListDetailPageState extends State<ListDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.listName),
+        backgroundColor: const Color.fromARGB(255, 131, 180, 75),
       ),
-      body: ListView.builder(
-        itemCount: daysOfWeek.length,
-        itemBuilder: (context, index) {
-          String day = daysOfWeek[index];
-          return ListTile(
-            title: Text(day),
-            subtitle: FoodList(foods: foodsByDay[day] ?? []),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DayDetailPage(
-                    day: day,
-                    foods: foodsByDay[day] ?? [],
-                    onFoodAdded: (food) {
-                      setState(() {
-                        if (foodsByDay.containsKey(day)) {
-                          foodsByDay[day]!.add(food);
-                        } else {
-                          foodsByDay[day] = [food];
-                        }
-                      });
-                    },
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+      body: Container(
+          color: const Color.fromARGB(255, 131, 180, 75),
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topRight: Radius.circular(70))),
+            child: ListView.builder(
+              itemCount: daysOfWeek.length,
+              itemBuilder: (context, index) {
+                String day = daysOfWeek[index];
+                return ListTile(
+                  title: Text(day),
+                  subtitle: FoodList(foods: foodsByDay[day] ?? []),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DayDetailPage(
+                          day: day,
+                          foods: foodsByDay[day] ?? [],
+                          onFoodAdded: (food) {
+                            setState(() {
+                              if (foodsByDay.containsKey(day)) {
+                                foodsByDay[day]!.add(food);
+                              } else {
+                                foodsByDay[day] = [food];
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _addNewFood(context),
-        child: Icon(Icons.add),
+        backgroundColor: const Color.fromARGB(255, 131, 180, 75),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -256,7 +267,8 @@ class DayDetailPage extends StatefulWidget {
   final List<String> foods;
   final Function(String) onFoodAdded;
 
-  DayDetailPage({required this.day, required this.foods, required this.onFoodAdded});
+  DayDetailPage(
+      {required this.day, required this.foods, required this.onFoodAdded});
 
   @override
   _DayDetailPageState createState() => _DayDetailPageState();
@@ -273,7 +285,8 @@ class _DayDetailPageState extends State<DayDetailPage> {
 
   // Edita um alimento
   void _editFood(BuildContext context, int index) async {
-    TextEditingController editController = TextEditingController(text: widget.foods[index]);
+    TextEditingController editController =
+        TextEditingController(text: widget.foods[index]);
     await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -318,33 +331,43 @@ class _DayDetailPageState extends State<DayDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.day),
-      ),
-      body: ListView.builder(
-        itemCount: widget.foods.length,
-        itemBuilder: (context, index) {
-          String food = widget.foods[index];
-          return ListTile(
-            leading: Checkbox(
-              value: _consumed[index],
-              onChanged: (value) {
-                setState(() {
-                  _consumed[index] = value!;
-                });
-              },
-            ),
-            title: Text(food),
-            trailing: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                _editFood(context, index);
-              },
-            ),
-          );
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text(widget.day),
+          backgroundColor: const Color.fromARGB(255, 131, 180, 75),
+        ),
+        body: Container(
+            color: const Color.fromARGB(255, 131, 180, 75),
+            child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(70))),
+              child: ListView.builder(
+                itemCount: widget.foods.length,
+                itemBuilder: (context, index) {
+                  String food = widget.foods[index];
+                  return ListTile(
+                    leading: Checkbox(
+                      value: _consumed[index],
+                      onChanged: (value) {
+                        setState(() {
+                          _consumed[index] = value!;
+                        });
+                      },
+                      activeColor: const Color.fromARGB(255, 131, 180, 75),
+                    ),
+                    title: Text(food),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
+                        _editFood(context, index);
+                      },
+                    ),
+                  );
+                },
+              ),
+            )));
   }
 }
 
@@ -355,7 +378,7 @@ class AddFoodPage extends StatefulWidget {
 }
 
 class _AddFoodPageState extends State<AddFoodPage> {
-  TextEditingController _foodController = TextEditingController();
+  final TextEditingController _foodController = TextEditingController();
   String _selectedDay = 'Segunda-feira';
 
   @override
@@ -367,64 +390,85 @@ class _AddFoodPageState extends State<AddFoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Adicionar Alimento'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextField(
-              controller: _foodController,
-              decoration: InputDecoration(
-                labelText: 'Alimento',
-                border: OutlineInputBorder(),
-                              ),
-            ),
-            SizedBox(height: 20.0),
-            DropdownButtonFormField<String>(
-              value: _selectedDay,
-              items: [
-                'Segunda-feira',
-                'Terça-feira',
-                'Quarta-feira',
-                'Quinta-feira',
-                'Sexta-feira',
-                'Sábado',
-                'Domingo',
-              ].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (newValue) {
-                setState(() {
-                  _selectedDay = newValue!;
-                });
-              },
-              decoration: InputDecoration(
-                labelText: 'Dia da semana',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                if (_foodController.text.isNotEmpty) {
-                  Navigator.pop(context, {'day': _selectedDay, 'food': _foodController.text});
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Por favor, insira o nome do alimento')),
-                  );
-                }
-              },
-              child: Text('Adicionar'),
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text('Adicionar Alimento'),
+          backgroundColor: const Color.fromARGB(255, 131, 180, 75),
         ),
-      ),
-    );
+        body: Container(
+            color: const Color.fromARGB(255, 131, 180, 75),
+            child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(70))),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    TextField(
+                      controller: _foodController,
+                      decoration: const InputDecoration(
+                        labelText: 'Nome do Alimento',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    DropdownButtonFormField<String>(
+                      value: _selectedDay,
+                      items: [
+                        'Segunda-feira',
+                        'Terça-feira',
+                        'Quarta-feira',
+                        'Quinta-feira',
+                        'Sexta-feira',
+                        'Sábado',
+                        'Domingo',
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          _selectedDay = newValue!;
+                        });
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Dia da semana',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_foodController.text.isNotEmpty) {
+                          Navigator.pop(context, {
+                            'day': _selectedDay,
+                            'food': _foodController.text
+                          });
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'Por favor, insira o nome do alimento')),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 131, 180, 75),
+                      ),
+                      child: const Text(
+                        'Adicionar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )));
   }
 }
