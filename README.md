@@ -1,16 +1,19 @@
-# fitmais
+# Fit+
 
-A new Flutter project.
+![logo](https://raw.githubusercontent.com/emal0n/fitmais/main/lib/Dumps/fe18f83d-5d9b-46f7-8361-ad432ad656ed.jpeg?token=GHSAT0AAAAAACTMJQEHKZELPL4ZVSOZQKY2ZTJXOEQ)
 
-## Getting Started
+# Sobre o Fit+
 
-This project is a starting point for a Flutter application.
+Visando o cenário tão corrido que estamos vivendo em nosso cotidiano, onde cada dia mais temos que acelerarmos, trouxemos Fit+ que é um App que traz funcionalidades como cronometro de meditação, dicas de saúde, controle de peso, assim como a funcionalidade de criação de uma rotina alimentar, com intuito de impulsionar pessoas de diferentes idades a manter a saúde e bem-estar em foco.
 
-A few resources to get you started if this is your first Flutter project:
+![screenshot](https://raw.githubusercontent.com/emal0n/fitmais/main/lib/Dumps/742a1203-e2f8-472b-8411-eae46a21ead6.jpeg?token=GHSAT0AAAAAACTMJQEGBGGZKJLQRVAHGC7MZTJXNSA)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Equipe
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Aislan Motta "as1lo"
+
+Gabrielle Miranda "gsp2019"
+
+Edmundo Neto "emal0n"
+
+João Victor "SrCoffee1"
