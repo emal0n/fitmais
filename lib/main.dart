@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
-import 'TelaPrincipal.dart';
+import 'firebase/firebase_options.dart';
+import 'Navegação/navegacao.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,7 @@ class FitMais extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Fit+',
       debugShowCheckedModeBanner: false,
       home: TelaPrincipal(),
