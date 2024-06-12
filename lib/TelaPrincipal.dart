@@ -4,7 +4,6 @@ import 'package:fitmais/Dicas_saude.dart';
 import 'package:fitmais/mainVICTOR.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'CtrlIMC.dart';
 import 'timer.dart';
 
@@ -18,7 +17,6 @@ class TelaPrincipalState extends State<TelaPrincipal> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    
     DicasSaude(),
     CtrlImc(),
     Cronometro(),
@@ -39,7 +37,7 @@ class TelaPrincipalState extends State<TelaPrincipal> {
         titleTextStyle: const TextStyle(
         fontSize: 40,
         fontWeight:FontWeight.w900,
-        color: Colors.black,
+        color: Colors.white,
         ),
         backgroundColor: const Color.fromARGB(255, 131, 180, 75),
       ),
@@ -51,26 +49,28 @@ class TelaPrincipalState extends State<TelaPrincipal> {
           BottomNavigationBarItem(
             icon: Icon(Icons.medical_information_outlined),
             label: 'Dicas de Saúde',
-            backgroundColor:  Colors.black,
+            backgroundColor:  Color.fromARGB(255, 131, 180, 75),
           ),
            BottomNavigationBarItem(
             icon: Icon(Icons.equalizer_rounded),
             label: 'Registro do Peso',
-            backgroundColor:  Colors.black,
+            backgroundColor:  Color.fromARGB(255, 131, 180, 75),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.timer_sharp),
             label: 'Timer Meditação',
-            backgroundColor:  Colors.black,
+            backgroundColor:  Color.fromARGB(255, 131, 180, 75),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.local_cafe_outlined),
             label: 'Rotina de Alimentação',
-            backgroundColor:  Colors.black,
+            backgroundColor:  Color.fromARGB(255, 131, 180, 75),
           ),
         ],
         
-        selectedItemColor: Colors.lightGreen[100],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.lightGreen[400],
+        selectedFontSize: 10,
         currentIndex: _currentIndex,
         onTap: _onTap,
       ),

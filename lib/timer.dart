@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:audioplayers/audioplayers.dart';
-
 
 class Cronometro extends StatefulWidget {
   @override
@@ -9,7 +7,6 @@ class Cronometro extends StatefulWidget {
 }
 
 class _CronometroState extends State<Cronometro> {
-  final Player = AudioCache();
 
   TextEditingController _controller = TextEditingController();
   late Timer _timer;
@@ -75,7 +72,13 @@ class _CronometroState extends State<Cronometro> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightGreen[100],
+       decoration: const BoxDecoration(color: Color.fromARGB(255, 131, 180, 75)),
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+             // borderRadius: BorderRadius.only(topLeft: Radius.circular(70)) 
+            ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -92,7 +95,7 @@ class _CronometroState extends State<Cronometro> {
                             _totalTime == 0 ? 1.0 : _remainingTime / _totalTime,
                         strokeWidth: 10,
                         valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.green[800]!),
+                            Color.fromARGB(255, 131, 180, 75)),
                       ),
                     ),
                     Text(
@@ -116,6 +119,7 @@ class _CronometroState extends State<Cronometro> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
+                          labelText: 'Minutos para você meditar...',
                         ),
                       ),
                     ),
@@ -124,7 +128,7 @@ class _CronometroState extends State<Cronometro> {
                   onTap: _startTimer,
                   child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color:Color.fromARGB(255, 131, 180, 75),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: const EdgeInsets.all(25),
@@ -132,7 +136,7 @@ class _CronometroState extends State<Cronometro> {
                         child: Text(
                           'INICIAR',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w900,
                             fontSize: 16,
                           ),
@@ -143,7 +147,7 @@ class _CronometroState extends State<Cronometro> {
                   onTap: _stopTimer,
                   child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Color.fromARGB(255, 131, 180, 75),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: const EdgeInsets.all(25),
@@ -151,7 +155,7 @@ class _CronometroState extends State<Cronometro> {
                         child: Text(
                           'PARAR',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w900,
                             fontSize: 16,
                           ),
@@ -162,7 +166,7 @@ class _CronometroState extends State<Cronometro> {
                   onTap: _resetTimer,
                   child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Color.fromARGB(255, 131, 180, 75),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: const EdgeInsets.all(25),
@@ -170,7 +174,7 @@ class _CronometroState extends State<Cronometro> {
                         child: Text(
                           'RESETAR',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.w900,
                             fontSize: 16,
                           ),
@@ -180,9 +184,11 @@ class _CronometroState extends State<Cronometro> {
                 ],
               ),
             ),
+            
             SizedBox(height: 20.0),
           ],
         ),
+      ),
       ),
     );
   }

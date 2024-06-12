@@ -135,7 +135,7 @@ class CtrlImcState extends State<CtrlImc> {
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(70)) 
+             // borderRadius: BorderRadius.only(topLeft: Radius.circular(70)) 
             ),
             child: Center(
                 child: Column(

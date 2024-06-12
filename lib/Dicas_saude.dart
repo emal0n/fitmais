@@ -7,21 +7,27 @@ class DicasSaude extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.lightGreen[100],
-      body: Center(
+      body: Container(
+         decoration: const BoxDecoration(color: Color.fromARGB(255, 131, 180, 75)),
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(70)) 
+            ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
                   'lib/Dumps/saude.png',
                   height: 240,
                 ),
               ),
-
+              const SizedBox(height: 20),
               const Text(
                 'Beba água!',
                 style: TextStyle(
@@ -94,6 +100,7 @@ class DicasSaude extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }
